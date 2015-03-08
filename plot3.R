@@ -1,4 +1,4 @@
-plot2 <- function() {
+plot3 <- function() {
   
   library(lubridate)
   
@@ -25,12 +25,15 @@ plot2 <- function() {
   ## Now for the plotting.
   
   ## First specify that we are creating the plot in a PNG file
-  png(file = "plot2.png", width = 480, height = 480, units = "px")
+  png(file = "plot3.png", width = 480, height = 480, units = "px")
   
   ## Then go ahead and create the plot
   
-  with(powerdata, plot(timestamp,Global_active_power, type="l",
-                       ylab = "Global Active Power (kilowatts)", xlab=""))
+  with(powerdata, plot(timestamp,Sub_metering_1, type="l",
+                       ylab = "Energy sub metering", xlab=""))
+  with(powerdata,points(timestamp,Sub_metering_2, type="l", col="red"))
+  with(powerdata,points(timestamp,Sub_metering_3, type="l", col="blue"))
+  legend("topright", lty=1, col = c("black", "red", "blue"), legend = c("Sub_metering_1","Sub_metering_2","Sub_metering_3"))
   
   ## And finish off by closing the device
   dev.off()
